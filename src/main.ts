@@ -1,20 +1,22 @@
 import * as PIXI from "pixi.js";
 
 (async () => {
-  const app = new PIXI.Application({
+  const app = new PIXI.Application();
+  await app.init({
     width: 800,
     height: 600,
     backgroundColor: 0x1099bb,
     resolution: window.devicePixelRatio || 1,
   });
+  globalThis.__PIXI_APP__ = app;
   document.body.appendChild(app.canvas);
 
   // https://github.com/pixijs/pixijs/discussions/9433#discussioncomment-5953492
-  PIXI.Assets.add({ alias: "player", src: "assets/player.png" });
-  PIXI.Assets.add({ alias: "item", src: "assets/item.png" });
-  PIXI.Assets.add({ alias: "enemy", src: "assets/enemy.png" });
-  PIXI.Assets.add({ alias: "collectSound", src: "assets/collect.mp3" });
-  PIXI.Assets.add({ alias: "gameOverSound", src: "assets/gameover.mp3" });
+  PIXI.Assets.add({ alias: "player", src: "assets/bunny.png" });
+  PIXI.Assets.add({ alias: "item", src: "assets/bunny.png" });
+  PIXI.Assets.add({ alias: "enemy", src: "assets/bunny.png" });
+  // PIXI.Assets.add({ alias: "collectSound", src: "assets/collect.mp3" });
+  // PIXI.Assets.add({ alias: "gameOverSound", src: "assets/gameover.mp3" });
   PIXI.Assets.load([
     "player",
     "item",
@@ -126,8 +128,8 @@ import * as PIXI from "pixi.js";
     app.ticker.stop();
     finalScoreText.textContent = String(score);
     gameOverScreen.style.display = "block";
-    const gameOverSound = new Audio(PIXI.Assets.get("gameOverSound").url);
-    gameOverSound.play();
+    // const gameOverSound = new Audio(PIXI.Assets.get("gameOverSound").url);
+    // gameOverSound.play();
   }
 
   // 遊戲主迴圈
@@ -157,8 +159,8 @@ import * as PIXI from "pixi.js";
         items.splice(i, 1);
         score += 10;
         scoreText.text = `分數: ${score}`;
-        const collectSound = new Audio(PIXI.Assets.get("collectSound").url);
-        collectSound.play();
+        // const collectSound = new Audio(PIXI.Assets.get("collectSound").url);
+        // collectSound.play();
       }
     }
 
