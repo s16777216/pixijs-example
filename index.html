@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增強版 Pixi.js 遊戲</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+
+        #gameOver {
+            position: absolute;
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gameOver">
+        <h1>遊戲結束</h1>
+        <p>最終分數: <span id="finalScore"></span></p>
+        <button onclick="location.reload()">重新開始</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.4.0/pixi.min.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
